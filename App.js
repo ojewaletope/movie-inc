@@ -1,16 +1,29 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function App() {
+import MovieLists from "./components/MovieLists";
+import Details from "./components/Details";
+import HomeScreen from "./components/HomeScreen";
+
+const Stack = createStackNavigator();
+ function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <NavigationContainer>
+        <Stack.Navigator>
+            <Stack.Screen name="Home" component={HomeScreen}/>
+          <Stack.Screen name="Lists" component={MovieLists} />
+          <Stack.Screen name="Details" component={Details} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    // <View style={styles.container}>
+    //  <MovieLists/>
+    // </View>
   );
 }
-
+export default App
 const styles = StyleSheet.create({
   container: {
     flex: 1,
